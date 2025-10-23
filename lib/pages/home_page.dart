@@ -5,6 +5,7 @@ import 'package:workout_planner/constants/responsive.dart';
 import 'package:workout_planner/data/equipment_data.dart';
 import 'package:workout_planner/data/exercise_data.dart';
 import 'package:workout_planner/data/user_data.dart';
+import 'package:workout_planner/pages/equipment_details_page.dart';
 import 'package:workout_planner/pages/exercise_details_page.dart';
 import 'package:workout_planner/widget/exercise_card.dart';
 import 'package:workout_planner/widget/progress_card.dart';
@@ -90,10 +91,24 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
 
-                    ExerciseCard(
-                      title: "Equipment",
-                      imageUrl: "assets/images/equipments/dumbbell.png",
-                      description: "see more..",
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EquipmentDetailsPage(
+                              equipmentTitle: "Equipment",
+                              equipmentDescription: "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.",
+                              equipmentList: equipmentList,
+                            ),
+                          ),
+                        );
+                      },
+                      child: ExerciseCard(
+                        title: "Equipment",
+                        imageUrl: "assets/images/equipments/dumbbell.png",
+                        description: "see more..",
+                      ),
                     ),
                   ],
                 ),
