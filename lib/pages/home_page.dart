@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:workout_planner/constants/colors.dart';
 import 'package:workout_planner/constants/responsive.dart';
+import 'package:workout_planner/data/equipment_data.dart';
+import 'package:workout_planner/data/exercise_data.dart';
 import 'package:workout_planner/data/user_data.dart';
+import 'package:workout_planner/pages/exercise_details_page.dart';
 import 'package:workout_planner/widget/exercise_card.dart';
 import 'package:workout_planner/widget/progress_card.dart';
 
@@ -20,6 +23,10 @@ class _HomePageState extends State<HomePage> {
 
   //user data
   final userData = user;
+
+  //exercise and equipment data
+  final exerciseList = ExerciseData().exerciseList;
+  final equipmentList = EquipmentData().equipmentList;
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +69,27 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ExerciseCard(
-                      title: "Running",
-                      imageUrl: "assets/images/exercises/cobra.png",
-                      description: "see more..",
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ExerciseDetailsPage(
+                              exerciseTitle: 'Warmup',
+                              exerciseDescription:
+                                  'Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.',
+                              exerciseList: exerciseList,
+                            ),
+                          ),
+                        );
+                      },
+                      child: ExerciseCard(
+                        title: "Warmup",
+                        imageUrl: "assets/images/exercises/cobra.png",
+                        description: "see more..",
+                      ),
                     ),
+
                     ExerciseCard(
                       title: "Equipment",
                       imageUrl: "assets/images/equipments/dumbbell.png",
@@ -78,15 +101,46 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ExerciseCard(
-                      title: "Exercise",
-                      imageUrl: "assets/images/exercises/downward-facing.png",
-                      description: "see more..",
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ExerciseDetailsPage(
+                              exerciseTitle: "Exercise",
+                              exerciseDescription:
+                                  "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web developme",
+                              exerciseList: exerciseList,
+                            ),
+                          ),
+                        );
+                      },
+                      child: ExerciseCard(
+                        title: "Exercise",
+                        imageUrl: "assets/images/exercises/downward-facing.png",
+                        description: "see more..",
+                      ),
                     ),
-                    ExerciseCard(
-                      title: "Stretching",
-                      imageUrl: "assets/images/equipments/checklist.png",
-                      description: "see more..",
+
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ExerciseDetailsPage(
+                              exerciseTitle: "Stretching",
+                              exerciseDescription:
+                                  "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web developme",
+                              exerciseList: exerciseList,
+                            ),
+                          ),
+                        );
+                      },
+                      child: ExerciseCard(
+                        title: "Stretching",
+                        imageUrl: "assets/images/exercises/hunch_back.png",
+                        description: "see more..",
+                      ),
                     ),
                   ],
                 ),
