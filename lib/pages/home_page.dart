@@ -60,7 +60,10 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 SizedBox(height: 10),
-                ProgressCard(progressValue: 0.5, total: 100),
+                ProgressCard(
+                  progressValue: userData.calculateTotalCaloriesBurned(),
+                  total: 100,
+                ),
                 SizedBox(height: 15),
                 Text(
                   "Today's Activity",
@@ -98,7 +101,8 @@ class _HomePageState extends State<HomePage> {
                           MaterialPageRoute(
                             builder: (context) => EquipmentDetailsPage(
                               equipmentTitle: "Equipment",
-                              equipmentDescription: "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.",
+                              equipmentDescription:
+                                  "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, publishing, and web development.",
                               equipmentList: equipmentList,
                             ),
                           ),

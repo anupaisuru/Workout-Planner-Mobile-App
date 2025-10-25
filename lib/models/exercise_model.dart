@@ -3,7 +3,7 @@ class Exercise {
   final String exerciseName;
   final String exerciseImgUrl;
   final int noOfMinutus;
-  final bool isComplted;
+  bool isComplted;
 
   Exercise({
     required this.id,
